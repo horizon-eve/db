@@ -1,0 +1,6 @@
+#!/bin/sh
+
+DUMP_FILE=$1
+
+curl -O https://www.fuzzwork.co.uk/dump/${DUMP_FILE}.bz2
+bzip2 -v -d ${DUMP_FILE}.bz2

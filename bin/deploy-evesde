@@ -1,0 +1,14 @@
+#!/bin/sh
+set -e
+
+SCHEMANAME=$1
+DUMP_FILE=$2
+
+# Pre cleanup
+sudo -u postgres psql -d racopub -b -c "select preimport_evesde('${SCHEMANAME}')"
+# Restore evesde intake dump
+sudo -u postgres pg_restore -ev -d racopub $DUMP_FILE
+# Release evesde
+sudo -u postgres psql -d racopub -b -c "select activate_evesde('${SCHEMANAME}')"
+# cleanup dump file
+#rm $DUMP_FILE
