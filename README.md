@@ -6,3 +6,4 @@ Database schemas and objects for horizon services. Requires db-migrate node app.
 3. db-migrate up:esi # Esi depdends on auth
 4. bin/dev-evesde-all # Download and restore eve sde data from fuzzwork
 5.  db-migrate up:api
+
